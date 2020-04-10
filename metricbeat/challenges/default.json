@@ -56,17 +56,58 @@
           }
         },
         {
-          "operation": "autohisto_agg",
+          "operation": "load-none",
           "warmup-iterations": 50,
           "iterations": 100,
           "target-throughput": 2
         },
         {
-          "operation": "date_histogram_agg",
+          "operation": "load-single-docvalue-fields",
           "warmup-iterations": 50,
           "iterations": 100,
           "target-throughput": 2
-        }
+        },
+        {
+          "operation": "load-single-stored-fields",
+          "warmup-iterations": 50,
+          "iterations": 100,
+          "target-throughput": 2
+        },
+        {
+          "operation": "load-small-docvalue-fields",
+          "warmup-iterations": 50,
+          "iterations": 100,
+          "target-throughput": 2
+        },
+        {
+          "operation": "load-small-stored-fields",
+          "warmup-iterations": 50,
+          "iterations": 100,
+          "target-throughput": 2
+        },
+        {
+          "operation": "load-medium-docvalue-fields",
+          "warmup-iterations": 50,
+          "iterations": 100,
+          "target-throughput": 2
+        },
+        {
+          "operation": "load-medium-stored-fields",
+          "warmup-iterations": 50,
+          "iterations": 100,
+          "target-throughput": 2
+      },
+      {
+        "operation": "load-large-docvalue-fields",
+        "warmup-iterations": 50,
+        "iterations": 100,
+        "target-throughput": 2
+      },
+      {
+        "operation": "load-large-stored-fields",
+        "warmup-iterations": 50,
+        "iterations": 100,
+        "target-throughput": 2
+      }
       ]
     }
-    

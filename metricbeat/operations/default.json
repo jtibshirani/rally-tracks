@@ -51,4 +51,228 @@
           }
         }
       }
+  },
+  {
+    "name": "load-none",
+    "operation-type": "search",
+    "body": {
+        "size": 100,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "metricset.name": "process"
+                }
+              },
+              {
+                "exists": {
+                  "field": "system.process.cgroup.memory.id"
+                }
+              }
+            ]
+          }
+        },
+        "_source": false
     }
+  },
+  {
+    "name": "load-single-docvalue-fields",
+    "operation-type": "search",
+    "body": {
+      "size": 100,
+      "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "metricset.name": "process"
+                }
+              },
+              {
+                "exists": {
+                  "field": "system.process.cgroup.memory.id"
+                }
+              }
+            ]
+          }
+      },
+      "_source": false,
+      "docvalue_fields": ["system.process.cgroup.memory.id"]
+    }
+  },
+  {
+    "name": "load-single-stored-fields",
+    "operation-type": "search",
+    "body": {
+      "size": 100,
+      "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "metricset.name": "process"
+                }
+              },
+              {
+                "exists": {
+                  "field": "system.process.cgroup.memory.id"
+                }
+              }
+            ]
+          }
+      },
+      "_source": false,
+      "stored_fields": ["system.process.cgroup.memory.id"]
+    }
+  },
+  {
+    "name": "load-small-docvalue-fields",
+    "operation-type": "search",
+    "body": {
+        "size": 100,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "metricset.name": "process"
+                }
+              },
+              {
+                "exists": {
+                  "field": "system.process.cgroup.memory.id"
+                }
+              }
+            ]
+          }
+        },
+      "_source": false,
+      "docvalue_fields": ["system.process.cgroup.memory.mem.*"]
+    }
+  },
+  {
+    "name": "load-small-stored-fields",
+    "operation-type": "search",
+    "body": {
+        "size": 100,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "metricset.name": "process"
+                }
+              },
+              {
+                "exists": {
+                  "field": "system.process.cgroup.memory.id"
+                }
+              }
+            ]
+          }
+        },
+      "_source": false,
+      "stored_fields": ["system.process.cgroup.memory.mem.*"]
+    }
+  },
+  {
+    "name": "load-medium-docvalue-fields",
+    "operation-type": "search",
+    "body": {
+        "size": 100,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "metricset.name": "process"
+                }
+              },
+              {
+                "exists": {
+                  "field": "system.process.cgroup.memory.id"
+                }
+              }
+            ]
+          }
+        },
+      "_source": false,
+      "docvalue_fields": ["system.process.cgroup.memory.*"]
+    }
+  },
+  {
+    "name": "load-medium-stored-fields",
+    "operation-type": "search",
+    "body": {
+        "size": 100,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "metricset.name": "process"
+                }
+              },
+              {
+                "exists": {
+                  "field": "system.process.cgroup.memory.id"
+                }
+              }
+            ]
+          }
+        },
+      "_source": false,
+      "stored_fields": ["system.process.cgroup.memory.*"]
+    }
+},
+{
+  "name": "load-large-docvalue-fields",
+  "operation-type": "search",
+  "body": {
+      "size": 100,
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "term": {
+                "metricset.name": "process"
+              }
+            },
+            {
+              "exists": {
+                "field": "system.process.cgroup.memory.id"
+              }
+            }
+          ]
+        }
+      },
+      "_source": false,
+      "docvalue_fields": ["system.process.cgroup.cpu.*", "system.process.cgroup.blkio.*", "system.process.cgroup.memory.*"]
+  }
+},
+{
+  "name": "load-large-stored-fields",
+  "operation-type": "search",
+  "body": {
+      "size": 100,
+      "query": {
+        "bool": {
+          "must": [
+            {
+              "term": {
+                "metricset.name": "process"
+              }
+            },
+            {
+              "exists": {
+                "field": "system.process.cgroup.memory.id"
+              }
+            }
+          ]
+        }
+      },
+      "_source": false,
+      "stored_fields": ["system.process.cgroup.cpu.*", "system.process.cgroup.blkio.*", "system.process.cgroup.memory.*"]
+  }
+}
