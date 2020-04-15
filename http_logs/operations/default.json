@@ -49,8 +49,7 @@
         "query": {
           "term": {
             "request.raw": {
-              "value": "GET / HTTP/1.0",
-              "boost": 3.0
+              "value": "GET / HTTP/1.0"
             }
           }
         }
@@ -65,7 +64,7 @@
         "query": {
           "script_score": {
             "script": {
-              "source": "_score * 3.0",
+              "source": "_score",
               "lang": "painless"
             },
             "query": {
