@@ -41,149 +41,41 @@
       "corpora": "http_logs"
     },
     {
-      "name": "default",
+      "name": "baseline",
       "operation-type": "search",
       "index": "logs-*",
       "body": {
-        "query": {
-          "match_all": {}
-        }
-      }
-    },
-    {
-      "name": "term",
-      "operation-type": "search",
-      "index": "logs-*",
-      "body": {
+       "track_total_hits": true,
         "query": {
           "term": {
             "request.raw": {
-              "value": "GET / HTTP/1.0"
+              "value": "GET / HTTP/1.0",
+              "boost": 3.0
             }
           }
         }
       }
     },
     {
-      "name": "range",
+      "name": "script-query",
       "operation-type": "search",
       "index": "logs-*",
       "body": {
+        "track_total_hits": true,
         "query": {
-          "range": {
-            "@timestamp": {
-              "gte": "now-{{'15-05-1998' | days_ago(now)}}d/d",
-              "lt": "now/d"
+          "script_score": {
+            "script": {
+              "source": "_score * 3.0",
+              "lang": "painless"
+            },
+            "query": {
+              "term": {
+                "request.raw": {
+                  "value": "GET / HTTP/1.0"
+                }
+              }
             }
           }
         }
-      }
-    },
-    {
-      "name": "hourly_agg",
-      "operation-type": "search",
-      "index": "logs-*",
-      "body": {
-        "size": 0,
-        "aggs": {
-          "by_hour": {
-            "date_histogram": {
-              "field": "@timestamp",
-              "calendar_interval": "hour"
-            }
-          }
-        }
-      }
-    },
-    {
-      "name": "scroll",
-      "operation-type": "search",
-      "index": "logs-*",
-      "pages": 25,
-      "results-per-page": 1000,
-      "body": {
-        "query": {
-          "match_all": {}
-        }
-      }
-    },
-    {
-      "name": "desc_sort_timestamp",
-      "operation-type": "search",
-      "index": "logs-*",
-      "body": {
-        "query": {
-          "match_all": {}
-        },
-        "sort" : [
-          {"@timestamp" : "desc"}
-        ]
-      }
-    },
-    {
-      "name": "asc_sort_timestamp",
-      "operation-type": "search",
-      "index": "logs-*",
-      "body": {
-        "query": {
-          "match_all": {}
-        },
-        "sort" : [
-          {"@timestamp" : "asc"}
-        ]
-      }
-    },
-    {
-      "name": "create-http-log-baseline-pipeline",
-      "operation-type": "put-pipeline",
-      "id": "http-log-baseline-pipeline",
-      "body": {
-        "description": "Process an the documents with a processor that does nothing. Baseline for overhead of pipeline.",
-        "processors": [
-          {
-            "uppercase": {
-              "field": "doesnotexist",
-              "ignore_missing": true
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "create-http-log-grok-pipeline",
-      "operation-type": "put-pipeline",
-      "id": "http-log-grok-pipeline",
-      "body": {
-        "description": "Process an http log line with grok. Requires the `unparsed` data set.",
-        "processors": [
-          {
-            "grok": {
-              "field": "message",
-              "patterns": [
-                "%{IPORHOST:clientip} %{HTTPDUSER} %{USER} \\[%{TIMESTAMP_ISO8601:@timestamp}\\] \"(?:%{WORD} %{NOTSPACE:request}(?: HTTP/%{NUMBER})?|%{DATA})\" %{NUMBER:status} (?:%{NUMBER:size}|-)"
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "create-http-log-geoip-pipeline",
-      "operation-type": "put-pipeline",
-      "id": "http-log-geoip-pipeline",
-      "body": {
-        "description": "Enrich the data with the geo-ip filter. Requires --elasticsearch-plugins='ingest-geoip'",
-        "processors": [
-          {
-            "geoip": {
-               "field": "clientip",
-               "properties": [
-                  "city_name",
-                  "country_name",
-                  "location"
-                ]
-            }
-          }
-        ]
       }
     }
