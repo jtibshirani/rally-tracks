@@ -43,7 +43,7 @@
     {
       "name": "baseline",
       "operation-type": "search",
-      "index": "logs-*",
+      "index": "logs-191998",
       "body": {
        "track_total_hits": true,
         "query": {
@@ -58,7 +58,7 @@
     {
       "name": "script-query",
       "operation-type": "search",
-      "index": "logs-*",
+      "index": "logs-191998",
       "body": {
         "track_total_hits": true,
         "query": {
