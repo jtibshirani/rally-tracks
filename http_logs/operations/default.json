@@ -46,10 +46,11 @@
       "index": "logs-191998",
       "body": {
        "track_total_hits": true,
-        "query": {
-          "term": {
-            "request.raw": {
-              "value": "GET / HTTP/1.0"
+       "query": {
+         "range": {
+            "@timestamp": {
+              "gte": "now-{{'15-05-1998' | days_ago(now)}}d/d",
+              "lt": "now/d"
             }
           }
         }
@@ -68,9 +69,10 @@
               "lang": "painless"
             },
             "query": {
-              "term": {
-                "request.raw": {
-                  "value": "GET / HTTP/1.0"
+              "range": {
+                "@timestamp": {
+                  "gte": "now-{{'15-05-1998' | days_ago(now)}}d/d",
+                  "lt": "now/d"
                 }
               }
             }
