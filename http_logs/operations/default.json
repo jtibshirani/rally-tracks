@@ -43,7 +43,7 @@
     {
       "name": "baseline",
       "operation-type": "search",
-      "index": "logs-191998",
+      "index": "logs-*",
       "body": {
        "track_total_hits": true,
        "query": {
@@ -59,13 +59,13 @@
     {
       "name": "script-query",
       "operation-type": "search",
-      "index": "logs-191998",
+      "index": "logs-*",
       "body": {
         "track_total_hits": true,
         "query": {
           "script_score": {
             "script": {
-              "source": "_score",
+              "source": "randomScore(100)",
               "lang": "painless"
             },
             "query": {
