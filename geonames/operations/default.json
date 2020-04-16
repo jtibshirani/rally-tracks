@@ -176,7 +176,7 @@
           "function_score": {
             "query": {
               "match_all": {}
-            },  
+            },
             "gauss": {
               "location": {
                 "origin": "52.37, 4.8951",
@@ -184,7 +184,7 @@
                 "offset": "0km",
                 "decay" : 0.1
               }
-            }     
+            }
           }
         }
       }
@@ -204,7 +204,7 @@
                  "origin": "52.37, 4.8951",
                   "scale": "500km",
                   "offset": "0km",
-                  "decay" : 0.1 
+                  "decay" : 0.1
               }
             }
           }
@@ -224,11 +224,11 @@
               "field": "population",
               "factor": 1.2,
               "modifier": "log2p"
-            }  
+            }
           }
         }
       }
-    }, 
+    },
     {
       "name": "field_value_script_score",
       "operation-type": "search",
@@ -239,7 +239,8 @@
               "match_all": {}
             },
             "script": {
-              "source": "Math.log10(doc['population'].value * 1.2 + 2)"
+              "source": "Math.log10(doc['population'].value * 1.2 + 2)",
+              "lang": "hacky_script"
             }
           }
         }
@@ -257,11 +258,11 @@
             "random_score": {
               "seed": 100,
               "field": "_seq_no"
-            }  
+            }
           }
         }
       }
-    },  
+    },
     {
       "name": "random_script_score",
       "operation-type": "search",
@@ -277,7 +278,7 @@
           }
         }
       }
-    },     
+    },
     {
       "name": "large_terms",
       "operation-type": "search",
