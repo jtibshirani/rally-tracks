@@ -239,8 +239,7 @@
               "match_all": {}
             },
             "script": {
-              "source": "Math.log10(doc['population'].value * 1.2 + 2)",
-              "lang": "hacky_script"
+              "source": "Math.log10(((long)doc['population'].value) * 1.2 + 2)"
             }
           }
         }
