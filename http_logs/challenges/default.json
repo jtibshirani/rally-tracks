@@ -236,7 +236,8 @@
         {
           "operation": {
             "operation-type": "force-merge",
-            "request-timeout": 7200
+            "request-timeout": 7200,
+            "max-num-segments": 1
           }
         },
         {
@@ -255,6 +256,12 @@
             "retry-until-success": true,
             "include-in-reporting": false
           }
+        },
+        {
+          "operation": "range",
+          "warmup-iterations": 100,
+          "iterations": 100,
+          "target-throughput": 1
         }
       ]
     },
