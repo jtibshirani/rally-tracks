@@ -255,6 +255,24 @@
             "retry-until-success": true,
             "include-in-reporting": false
           }
+        },
+        {
+          "operation": "range-small",
+          "warmup-iterations": 100,
+          "iterations": 100,
+          "target-throughput": 1
+        },
+        {
+          "operation": "range-medium",
+          "warmup-iterations": 100,
+          "iterations": 100,
+          "target-throughput": 1
+        },
+        {
+          "operation": "range-large",
+          "warmup-iterations": 100,
+          "iterations": 100,
+          "target-throughput": 1
         }
       ]
     },
