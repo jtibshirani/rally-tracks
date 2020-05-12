@@ -112,13 +112,13 @@
     {
       "name": "range-large-with-agg",
       "operation-type": "search",
-      "index": "logs-191998",
+      "index": "logs-241998",
       "body": {
         "query": {
           "range": {
             "@timestamp": {
-                "gte": 894700389,
-                "lte": 894800389
+                "gte": 897259801,
+                "lte": 897503930
             }
           }
         },
