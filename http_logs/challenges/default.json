@@ -273,12 +273,6 @@
           "warmup-iterations": 100,
           "iterations": 100,
           "target-throughput": 1
-        },
-        {
-          "operation": "range-large-with-agg",
-          "warmup-iterations": 100,
-          "iterations": 100,
-          "target-throughput": 1
         }
       ]
     },

@@ -67,13 +67,13 @@
     {
       "name": "range-small",
       "operation-type": "search",
-      "index": "logs-191998",
+      "index": "logs-*",
       "body": {
         "query": {
           "range": {
             "@timestamp": {
-                "gte": 894700389,
-                "lte": 894700389
+                "gt": 897633930,
+                "lte": 897655999
             }
           }
         }
@@ -82,13 +82,13 @@
     {
       "name": "range-medium",
       "operation-type": "search",
-      "index": "logs-191998",
+      "index": "logs-*",
       "body": {
         "query": {
           "range": {
             "@timestamp": {
-                "gte": 894700389,
-                "lte": 894710389
+                "gt": 897623930,
+                "lte": 897655999
             }
           }
         }
@@ -97,13 +97,13 @@
     {
       "name": "range-large",
       "operation-type": "search",
-      "index": "logs-191998",
+      "index": "logs-*",
       "body": {
         "query": {
           "range": {
             "@timestamp": {
-                "gte": 894700389,
-                "lte": 894800389
+                "gt": 897259801,
+                "lte": 897503930
             }
           }
         }
