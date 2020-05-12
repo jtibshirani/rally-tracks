@@ -65,30 +65,60 @@
       }
     },
     {
-      "name": "range",
+      "name": "range-small",
       "operation-type": "search",
-      "index": "logs-*",
+      "index": "logs-191998",
       "body": {
         "query": {
           "range": {
             "@timestamp": {
-              "gte": "now-{{'15-05-1998' | days_ago(now)}}d/d",
-              "lt": "now/d"
+                "gte": 894700389,
+                "lte": 894700389
             }
           }
         }
       }
     },
     {
-      "name": "range-with-agg",
+      "name": "range-medium",
       "operation-type": "search",
-      "index": "logs-*",
+      "index": "logs-191998",
       "body": {
         "query": {
           "range": {
             "@timestamp": {
-              "gte": "now-{{'15-05-1998' | days_ago(now)}}d/d",
-              "lt": "now/d"
+                "gte": 894700389,
+                "lte": 894710389
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "range-large",
+      "operation-type": "search",
+      "index": "logs-191998",
+      "body": {
+        "query": {
+          "range": {
+            "@timestamp": {
+                "gte": 894700389,
+                "lte": 894800389
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "range-large-with-agg",
+      "operation-type": "search",
+      "index": "logs-191998",
+      "body": {
+        "query": {
+          "range": {
+            "@timestamp": {
+                "gte": 894700389,
+                "lte": 894800389
             }
           }
         },
