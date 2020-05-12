@@ -65,18 +65,50 @@
       }
     },
     {
+      "name": "term-small",
+      "operation-type": "search",
+      "index": "logs-241998",
+      "body": {
+          "query": {
+            "term": {
+              "clientip": "195.206.15.0"
+            }
+          }
+      }
+    },
+    {
       "name": "range-small",
       "operation-type": "search",
       "index": "logs-241998",
       "body": {
-        "query": {
-          "range": {
-            "@timestamp": {
-                "gt": 897633930,
-                "lte": 897655999
-            }
+          "query": {
+              "bool": {
+                  "must": [{
+                      "term": {
+                        "clientip": "195.206.15.0"
+                      }
+                  }, {
+                      "range": {
+                        "@timestamp": {
+                            "gte": 897303051,
+                            "lte": 897303061
+                        }
+                      }
+                  }]
+              }
           }
-        }
+      }
+    },
+    {
+      "name": "term-medium",
+      "operation-type": "search",
+      "index": "logs-241998",
+      "body": {
+          "query": {
+              "terms": {
+                "clientip": ["195.206.15.0", "236.56.10.0", "13.35.5.0"]
+              }
+          }
       }
     },
     {
@@ -84,51 +116,22 @@
       "operation-type": "search",
       "index": "logs-241998",
       "body": {
-        "query": {
-          "range": {
-            "@timestamp": {
-                "gt": 897623930,
-                "lte": 897655999
-            }
+          "query": {
+              "bool": {
+                  "must": [{
+                      "terms": {
+                        "clientip": ["195.206.15.0", "236.56.10.0", "13.35.5.0"]
+                      }
+                  }, {
+                      "range": {
+                        "@timestamp": {
+                            "gte": 897303051,
+                            "lte": 897303061
+                        }
+                      }
+                  }]
+              }
           }
-        }
-      }
-    },
-    {
-      "name": "range-large",
-      "operation-type": "search",
-      "index": "logs-241998",
-      "body": {
-        "query": {
-          "range": {
-            "@timestamp": {
-                "gt": 897259801,
-                "lte": 897503930
-            }
-          }
-        }
-      }
-    },
-    {
-      "name": "range-large-with-agg",
-      "operation-type": "search",
-      "index": "logs-241998",
-      "body": {
-        "query": {
-          "range": {
-            "@timestamp": {
-                "gte": 897259801,
-                "lte": 897503930
-            }
-          }
-        },
-        "aggs": {
-          "by_status": {
-            "terms": {
-              "field": "status"
-            }
-          }
-        }
       }
     },
     {
