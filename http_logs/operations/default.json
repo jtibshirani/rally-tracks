@@ -67,7 +67,7 @@
     {
       "name": "range-small",
       "operation-type": "search",
-      "index": "logs-*",
+      "index": "logs-241998",
       "body": {
         "query": {
           "range": {
@@ -82,7 +82,7 @@
     {
       "name": "range-medium",
       "operation-type": "search",
-      "index": "logs-*",
+      "index": "logs-241998",
       "body": {
         "query": {
           "range": {
@@ -97,7 +97,7 @@
     {
       "name": "range-large",
       "operation-type": "search",
-      "index": "logs-*",
+      "index": "logs-241998",
       "body": {
         "query": {
           "range": {
