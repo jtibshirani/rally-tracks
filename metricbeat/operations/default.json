@@ -56,7 +56,7 @@
     "name": "load-none",
     "operation-type": "search",
     "body": {
-        "size": 20,
+        "size": 100,
         "query": {
           "bool": {
             "must": [
@@ -80,7 +80,7 @@
     "name": "load-single-docvalue-fields",
     "operation-type": "search",
     "body": {
-      "size": 20,
+      "size": 100,
       "query": {
           "bool": {
             "must": [
@@ -105,7 +105,7 @@
     "name": "load-small-docvalue-fields",
     "operation-type": "search",
     "body": {
-        "size": 20,
+        "size": 100,
         "query": {
           "bool": {
             "must": [
@@ -130,7 +130,7 @@
     "name": "load-medium-docvalue-fields",
     "operation-type": "search",
     "body": {
-        "size": 20,
+        "size": 100,
         "query": {
           "bool": {
             "must": [
@@ -155,7 +155,7 @@
     "name": "load-single-source-filter",
     "operation-type": "search",
     "body": {
-      "size": 20,
+      "size": 100,
       "query": {
           "bool": {
             "must": [
@@ -179,7 +179,7 @@
     "name": "load-small-source-filter",
     "operation-type": "search",
     "body": {
-        "size": 20,
+        "size": 100,
         "query": {
           "bool": {
             "must": [
@@ -203,7 +203,7 @@
     "name": "load-medium-source-filter",
     "operation-type": "search",
     "body": {
-        "size": 20,
+        "size": 100,
         "query": {
           "bool": {
             "must": [
@@ -227,7 +227,7 @@
     "name": "load-single-fields",
     "operation-type": "search",
     "body": {
-      "size": 20,
+      "size": 100,
       "query": {
           "bool": {
             "must": [
@@ -252,7 +252,7 @@
     "name": "load-small-fields",
     "operation-type": "search",
     "body": {
-    "size": 20,
+    "size": 100,
     "query": {
       "bool": {
         "must": [
@@ -277,7 +277,7 @@
     "name": "load-medium-fields",
     "operation-type": "search",
     "body": {
-      "size": 20,
+      "size": 100,
       "query": {
         "bool": {
           "must": [
