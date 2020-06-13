@@ -77,6 +77,30 @@
     }
   },
   {
+    "name": "load-source",
+    "operation-type": "search",
+    "body": {
+        "size": 20,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "metricset.name": "process"
+                }
+              },
+              {
+                "exists": {
+                  "field": "system.process.cgroup.memory.id"
+                }
+              }
+            ]
+          }
+        },
+        "_source": true
+    }
+  },
+  {
     "name": "load-single-docvalue-fields",
     "operation-type": "search",
     "body": {
