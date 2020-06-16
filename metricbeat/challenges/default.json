@@ -56,48 +56,6 @@
           }
         },
         {
-          "operation": "load-none",
-          "warmup-iterations": 50,
-          "iterations": 100,
-          "target-throughput": 2
-        },
-        {
-          "operation": "load-single-docvalue-fields",
-          "warmup-iterations": 50,
-          "iterations": 100,
-          "target-throughput": 2
-        },
-        {
-          "operation": "load-small-docvalue-fields",
-          "warmup-iterations": 50,
-          "iterations": 100,
-          "target-throughput": 2
-        },
-        {
-          "operation": "load-medium-docvalue-fields",
-          "warmup-iterations": 50,
-          "iterations": 100,
-          "target-throughput": 2
-        },
-        {
-          "operation": "load-single-source-filter",
-          "warmup-iterations": 50,
-          "iterations": 100,
-          "target-throughput": 2
-        },
-        {
-          "operation": "load-small-source-filter",
-          "warmup-iterations": 50,
-          "iterations": 100,
-          "target-throughput": 2
-        },
-        {
-          "operation": "load-medium-source-filter",
-          "warmup-iterations": 50,
-          "iterations": 100,
-          "target-throughput": 2
-        },
-        {
           "operation": "load-single-fields",
           "warmup-iterations": 50,
           "iterations": 100,
