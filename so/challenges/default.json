@@ -46,6 +46,12 @@
             "retry-until-success": true,
             "include-in-reporting": false
           }
+        },
+        {
+          "operation": "highlight",
+          "clients": 1,
+          "warmup-iterations": 10,
+          "iterations": 50
         }
       ]
     }
