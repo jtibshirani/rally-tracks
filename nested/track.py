@@ -133,6 +133,7 @@ class NestedQueryParamSourceWithInnerHits(QueryParamSource):
                                         }
                                     },
                                     "inner_hits": {
+                                        "_source": True,
                                         "size": self._params["inner_hits_size"]
                                     }
                                 }
