@@ -6,7 +6,8 @@
     "index.mapping.total_fields.limit": 20000,
     "index.search.slowlog.level" : "debug",
     "index.search.slowlog.threshold.fetch.debug" : "0s",
-    "index.search.slowlog.threshold.query.debug" : "0s"
+    "index.search.slowlog.threshold.query.debug" : "0s",
+    "index.sort.field": "system.process.cgroup.cpuacct.percpu.1"
   },
   "mappings" : {
     "_meta" : {
@@ -159,6 +160,9 @@
     ],
     "date_detection" : false,
     "properties" : {
+      "system.process.cgroup.cpuacct.percpu.1": {
+        "type": "long"
+      },
       "@timestamp" : {
         "type" : "date"
       },
