@@ -8,7 +8,7 @@
       "name": "fetch_doc_values_fields",
       "operation-type": "search",
       "body": {
-        "size": 100,
+        "size": 10,
         "query": {
           "bool": {
             "must": [
