@@ -5,6 +5,62 @@
       "ingest-percentage": {{ingest_percentage | default(100)}}
     },
     {
+      "name": "fetch_doc_values_fields",
+      "operation-type": "search",
+      "body": {
+        "size": 100,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "station.country_code": "US"
+                }
+              }
+            ]
+          }
+        },
+       "docvalue_fields" : [
+    		{ "field" : "AWDR" },
+    		{ "field" : "DAPR" },
+    		{ "field" : "DASF" },
+    		{ "field" : "DATN" },
+    		{ "field" : "DATX" },
+    		{ "field" : "DWPR" },
+    		{ "field" : "MDSF" },
+    		{ "field" : "PGTM" },
+    		{ "field" : "PSUN" },
+    		{ "field" : "SN31" },
+    		{ "field" : "SN32" },
+    		{ "field" : "SN33" },
+    		{ "field" : "SN35" },
+    		{ "field" : "SN36" },
+    		{ "field" : "SN51" },
+    		{ "field" : "SN52" },
+    		{ "field" : "SN53" },
+    		{ "field" : "SN55" },
+    		{ "field" : "SN56" },
+    		{ "field" : "SN57" },
+    		{ "field" : "SNOW" },
+    		{ "field" : "SNWD" },
+    		{ "field" : "SX31" },
+    		{ "field" : "SX32" },
+    		{ "field" : "SX33" },
+    		{ "field" : "SX35" },
+    		{ "field" : "SX36" },
+    		{ "field" : "SX51" },
+    		{ "field" : "SX52" },
+    		{ "field" : "SX53" },
+    		{ "field" : "SX55" },
+    		{ "field" : "SX56" },
+    		{ "field" : "SX57" },
+    		{ "field" : "TSUN" },
+    		{ "field" : "WDF2" },
+    		{ "field" : "WDFG" }
+    	]
+      }
+    },
+    {
       "name": "range_field_big_range",
       "operation-type": "search",
       "body": {
