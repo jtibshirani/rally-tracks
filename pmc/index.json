@@ -14,7 +14,8 @@
         "type": "keyword"
       },
       "journal": {
-        "type": "text"
+        "type": "text",
+        "store": true
       },
       "date": {
         "type": "text"

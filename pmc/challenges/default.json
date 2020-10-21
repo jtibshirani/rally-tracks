@@ -45,7 +45,8 @@
         {
           "operation": {
             "operation-type": "force-merge",
-            "request-timeout": 7200
+            "request-timeout": 7200,
+            "max-num-segments": 1
           }
         },
         {
@@ -66,159 +67,16 @@
           }
         },
         {
-          "operation": "default",
+          "operation": "term-source",
           "warmup-iterations": 500,
           "iterations": 200,
           "target-throughput": 20
         },
         {
-          "operation": "term",
+          "operation": "term-stored",
           "warmup-iterations": 500,
           "iterations": 200,
           "target-throughput": 20
-        },
-        {
-          "operation": "phrase",
-          "warmup-iterations": 500,
-          "iterations": 200,
-          "target-throughput": 20
-        },
-        {
-          "operation": "articles_monthly_agg_uncached",
-          "warmup-iterations": 500,
-          "iterations": 200,
-          "target-throughput": 20
-        },
-        {
-          "operation": "articles_monthly_agg_cached",
-          "warmup-iterations": 500,
-          "iterations": 200,
-          "target-throughput": 20
-        },
-        {
-          "operation": "scroll",
-          "warmup-iterations": 50,
-          "iterations": 100,
-          "target-throughput": 0.5
-        }
-      ]
-    },
-    {
-      "name": "append-no-conflicts-index-only",
-      "description": "Indexes the whole document corpus using Elasticsearch default settings. We only adjust the number of replicas as we benchmark a single node cluster and Rally will only start the benchmark if the cluster turns green. Document ids are unique so all index operations are append only.",
-      "schedule": [
-        {
-          "operation": "delete-index"
-        },
-        {
-          "operation": {
-            "operation-type": "create-index",
-            "settings": {{index_settings | default({}) | tojson}}
-          }
-        },
-        {
-          "name": "check-cluster-health",
-          "operation": {
-            "operation-type": "cluster-health",
-            "index": "pmc",
-            "request-params": {
-              "wait_for_status": "{{cluster_health | default('green')}}",
-              "wait_for_no_relocating_shards": "true"
-            }
-          }
-        },
-        {
-          "operation": "index-append",
-          "warmup-time-period": 240,
-          "clients": {{bulk_indexing_clients | default(8)}}
-        },
-        {
-          "name": "refresh-after-index",
-          "operation": "refresh"
-        },
-        {
-          "operation": {
-            "operation-type": "force-merge",
-            "request-timeout": 7200
-          }
-        },
-        {
-          "name": "refresh-after-force-merge",
-          "operation": "refresh"
-        },
-        {
-          "name": "wait-until-merges-finish",
-          "operation": {
-            "operation-type": "index-stats",
-            "index": "_all",
-            "condition": {
-              "path": "_all.total.merges.current",
-              "expected-value": 0
-            },
-            "retry-until-success": true,
-            "include-in-reporting": false
-          }
-        }
-      ]
-    },
-    {
-      "name": "append-sorted-no-conflicts",
-      "description": "Indexes the whole document corpus in an index sorted by timestamp field in descending order (most recent first). Document ids are unique so all index operations are append only.",
-      "schedule": [
-        {
-          "operation": "delete-index"
-        },
-        {
-          "operation": {
-            "operation-type": "create-index",
-            "settings": {%- if index_settings is defined %} {{index_settings | tojson}} {%- else %} {
-              "index.sort.field": "timestamp",
-              "index.sort.order": "desc"
-            }{%- endif %}
-          }
-        },
-        {
-          "name": "check-cluster-health",
-          "operation": {
-            "operation-type": "cluster-health",
-            "index": "pmc",
-            "request-params": {
-              "wait_for_status": "{{cluster_health | default('green')}}",
-              "wait_for_no_relocating_shards": "true"
-            }
-          }
-        },
-        {
-          "operation": "index-append",
-          "warmup-time-period": 240,
-          "clients": {{bulk_indexing_clients | default(8)}}
-        },
-        {
-          "name": "refresh-after-index",
-          "operation": "refresh"
-        },
-        {
-          "operation": {
-            "operation-type": "force-merge",
-            "request-timeout": 7200
-          }
-        },
-        {
-          "name": "refresh-after-force-merge",
-          "operation": "refresh"
-        },
-        {
-          "name": "wait-until-merges-finish",
-          "operation": {
-            "operation-type": "index-stats",
-            "index": "_all",
-            "condition": {
-              "path": "_all.total.merges.current",
-              "expected-value": 0
-            },
-            "retry-until-success": true,
-            "include-in-reporting": false
-          }
         }
       ]
     },

@@ -26,7 +26,7 @@
       }
     },
     {
-      "name": "term",
+      "name": "term-source",
       "operation-type": "search",
       "#COMMENT": "Large responses cause overhead on the client when decompressing the response. Disable to avoid the overhead",
       "response-compression-enabled": false,
@@ -35,7 +35,25 @@
           "term": {
             "body": "physician"
           }
-        }
+        },
+        "_source": [ "journal" ],
+        "size": 100
+      }
+    },
+    {
+      "name": "term-stored",
+      "operation-type": "search",
+      "#COMMENT": "Large responses cause overhead on the client when decompressing the response. Disable to avoid the overhead",
+      "response-compression-enabled": false,
+      "body": {
+        "query": {
+          "term": {
+            "body": "physician"
+          }
+        },
+        "stored_fields": [ "journal" ],
+        "_source": false,
+        "size": 100
       }
     },
     {
