@@ -57,13 +57,13 @@
           }
         },
         {
-          "operation": "load-none",
+          "operation": "load-source",
           "warmup-iterations": 50,
           "iterations": 100,
           "target-throughput": 2
         },
         {
-          "operation": "load-source",
+          "operation": "load-single-stored-fields",
           "warmup-iterations": 50,
           "iterations": 100,
           "target-throughput": 2
